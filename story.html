@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Story Generator</title>
+</head>
+<body>
+
+<h1>Personalized Story Generator</h1>
+<button onclick="generateStory()">Generate Your Story</button>
+<p id="story"></p>
+
+<script>
+function getUserInputs() {
+    const name = prompt("Enter your name:");
+    const favoriteColor = prompt("Enter your favorite color:");
+    const favoriteAnimal = prompt("Enter your favorite animal:");
+    const dreamJob = prompt("Enter your dream job:");
+    const city = prompt("Enter a city you like:");
+    return { name, favoriteColor, favoriteAnimal, dreamJob, city };
+}
+
+function generateStory() {
+    const { name, favoriteColor, favoriteAnimal, dreamJob, city } = getUserInputs();
+    const storyTemplates = [
+        `Once upon a time in the vibrant city of ${city}, there lived a young adventurer named ${name}. Every morning, ${name} would don their ${favoriteColor} outfit and set out to explore the city with their loyal ${favoriteAnimal}. Together, they dreamed of becoming the best ${dreamJob} in the world.`,
+        `In the bustling streets of ${city}, ${name} could always be found wearing something ${favoriteColor}. ${name} had a unique bond with a ${favoriteAnimal}, and they both shared a passion for ${dreamJob}. Their adventures together were the talk of the town.`,
+        `Far away in the enchanting city of ${city}, ${name} and their ${favoriteColor} ${favoriteAnimal} were inseparable. ${name} aspired to be a renowned ${dreamJob}, and with the support of their ${favoriteAnimal}, they knew no dream was too big to chase.`
+    ];
+    const story = storyTemplates[Math.floor(Math.random() * storyTemplates.length)];
+    document.getElementById("story").innerText = story;
+}
+</script>
+
+</body>
+</html>
